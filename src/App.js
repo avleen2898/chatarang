@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 
 import './App.css';
 import Main from './Main';
+import SignIn from './SignIn';
 
 class App extends Component {
   constructor(){
@@ -18,6 +19,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
+       <SignIn />
        <Main user={this.state.user}/>
       </div>
     );
