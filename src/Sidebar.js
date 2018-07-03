@@ -16,10 +16,10 @@ const Sidebar = (props) => {
         XTBC 18
       </h1>
       <nav className="RoomList" style={styles.children}>
-        <h2>Rooms</h2>
-        <ul>
-          <li><a href="#">general</a></li>
-          <li><a href="#">random</a></li>
+        <h2 style={styles.h2}>Rooms</h2>
+        <ul style={styles.ul}>
+          <li style={styles.li}><a href="#">general</a></li>
+          <li style={styles.li}><a href="#">random</a></li>
         </ul>
       </nav>
     </aside>
@@ -35,16 +35,30 @@ const styles = {
     display: 'flex',
     flexDirection: 'column',
   },
-
   children: {
     padding: '0 1rem',
   },
-
   h1: {
     color: 'white',
     fontSize: '1.2rem',
     marginTop: 0,
     padding: '0 1rem',
+  },
+  h2: {
+    fontSize: '1rem',
+  },
+  ul: {
+    listStyle: 'none',
+    marginLeft: 0,
+    paddingLeft: 0,
+  },
+  li: {
+    marginBottom: '0.5rem',
+  },
+  a: {
+    display: 'block',
+    color: 'whitesmoke',
+    textDecoration: 'none',
   }
 };
 
