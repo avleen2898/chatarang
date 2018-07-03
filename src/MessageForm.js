@@ -10,8 +10,9 @@ class MessageForm extends Component{
     }
 
     handleSubmit = (ev) => {
-        ev.preventDefault()
-        this.props.addMessage(this.state.body)
+        ev.preventDefault();
+        this.props.addMessage(this.state.body);
+        this.setState({body: ''});
     }
 
     render(){
