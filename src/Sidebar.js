@@ -6,7 +6,7 @@ const Sidebar = (props) => {
       <div className="UserInfo" style={styles.children}>
         <div className="Avatar"></div>
         <div className="user">
-          {props.user[0].displayName}
+          {props.user.displayName}
         </div>
         <a href="#">
           <i className="fas fa-sign-out-alt"></i>
