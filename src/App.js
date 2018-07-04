@@ -10,7 +10,7 @@ class App extends Component {
     this.state = {
       user: [ 
         {
-        uid: '1',
+        uid: 'Admin',
         displayName: 'Avleen',
         email: 'avleen2898@gmail.com',
       },
@@ -19,13 +19,13 @@ class App extends Component {
   }
 
   addUser = (userName) => {
-    const userNames = [...this.state.user];
-    userNames.push({
-      uid: `${userName}--2018`,
+    const updatedUsers = [...this.state.user];
+    updatedUsers.push({
+      uid: `${userName}--XTBC2018`,
       displayName: userName,
       email: '',
     });
-    this.setState({user: userNames});
+    this.setState({user: updatedUsers});
   }
 
 

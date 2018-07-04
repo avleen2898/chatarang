@@ -13,14 +13,14 @@ class Chat extends Component{
                 user: {
                     uid: 123,
                     displayName: 'Avleen',
-                    email: 'ajdjdk#kek'}, 
-                body: 'I, too, enjoy chatting.' },
+                    email: 'avleen2898@gmail.com'}, 
+                body: 'DANA!!! I need your help' },
               { id: 2, 
                 user: {
                     uid: 2737,
-                    displayName: 'dpalazzo', 
-                    email: 'ndond'},
-                body: 'This guy is so hip. I love my job.' },
+                    displayName: 'Dana', 
+                    email: 'dpalazzo@fretless.com'},
+                body: 'I got ya! Be right there' },
             ],
           }; 
     }
