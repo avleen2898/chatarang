@@ -18,8 +18,8 @@ const Sidebar = (props) => {
       <nav className="RoomList" style={styles.children}>
         <h2 style={styles.h2}>Rooms</h2>
         <ul style={styles.ul}>
-          <li style={styles.li}><a href="#">general</a></li>
-          <li style={styles.li}><a href="#">random</a></li>
+          <li style={styles.li}><a href="#" style={styles.a}>general</a></li>
+          <li style={styles.li}><a href="#" style={styles.a}>random</a></li>
         </ul>
       </nav>
     </aside>
