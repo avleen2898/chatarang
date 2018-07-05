@@ -4,30 +4,39 @@ class SignIn extends Component{
     constructor(){
         super();
         this.state = {
-            userName: ''
+            email: ''
         }
     }
 
     handleChange = (ev) => {
-      this.setState({userName: ev.target.value});
+      this.setState({email: ev.target.value});
     }
 
     handleSubmit = (ev) =>  {
         ev.preventDefault();
-        this.props.addUser(this.state.userName);
-        this.setState({userName: ''});
+        this.props.handleAuth({
+            uid: `${this.state.email}-XTBC2018`,
+            displayName: this.state.email,
+            email: this.state.email,
+        }
+        );
     }
 
     render(){
         return (
-            <form className="SignIn" onSubmit={this.handleSubmit}>
-                Please enter your user name:
-                <input type="text" 
-                placeholder="Chatarang User Name"
-                value={this.state.userName} 
-                onChange={this.handleChange} />
-                <button type="submit">Submit</button>
-            </form>
+            <div className="SignIn">
+                <form onSubmit={this.handleSubmit}>
+                    <input 
+                    autoFocus
+                    type="email"
+                    name="email"
+                    placeholder="Enter your email"
+                    value={this.state.email}
+                    onChange={this.handleChange}
+                    />
+                    <button type="submit">Sign In</button>
+                </form>
+            </div>
         )
     }
 }

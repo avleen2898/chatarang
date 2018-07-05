@@ -8,34 +8,31 @@ class App extends Component {
   constructor(){
     super();
     this.state = {
-      user: {
-        uid: 'Admin',
-        displayName: 'Avleen',
-        email: 'avleen2898@gmail.com',
-      },
-    signIn: true,
+      user: {},
     };
   }
 
-  addUser = (userName) => {
-    const updatedUser = {
-      uid: `${userName}--XTBC2018`,
-      displayName: userName,
-      email: '',
-    }
-    this.setState({user: updatedUser, signIn: false});
+  handleAuth = (user) => {
+    this.setState({user: user});
+  }
+
+  signedIn = () => {
+    return this.state.user.uid
+  }
+
+  signOut = () => {
+    this.setState({user: {} });
   }
 
 
   render() {
-    let element;
-    if(this.state.signIn){
-      element = <SignIn addUser={this.addUser}/>
-    }
     return (
       <div className="App">
-        {element}
-        <Main user={this.state.user} /> 
+        {
+          this.signedIn() 
+          ? <Main user={this.state.user} signOut={this.signOut}/> 
+          : <SignIn handleAuth={this.handleAuth}/>
+        }
       </div>
     );
   }
