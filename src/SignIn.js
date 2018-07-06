@@ -76,7 +76,7 @@ const styles = StyleSheet.create({
   },
 
   header: {
-    backgroundColor: '#fff',
+    backgroundColor: '#a0522d',
     height: '4rem',
     padding: '0 2rem',
     margin: 0,
@@ -86,7 +86,7 @@ const styles = StyleSheet.create({
   },
 
   title: {
-    color: '#ff3344',
+    color: '#004c4c',
     fontWeight: 400,
     textTransform: 'uppercase',
     lineHeight: '80px',
@@ -142,7 +142,7 @@ const styles = StyleSheet.create({
     padding: '1rem 2rem',
     fontSize: '1.2rem',
     borderRadius: '1rem',
-    backgroundColor: '#ff3333',
+    backgroundColor: '#004c4c',
     color: 'white',
     width: '20rem',
   },
