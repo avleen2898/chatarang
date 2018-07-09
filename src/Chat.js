@@ -27,7 +27,7 @@ class Chat extends Component{
     }
 
     componentDidMount(){
-        base.syncState(`messages`, {
+        base.syncState(`messages/general`, {
             context: this,
             state: 'messages',
             asArray: true,
