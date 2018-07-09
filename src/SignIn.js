@@ -38,10 +38,13 @@ class SignIn extends Component {
             className={css(styles.form)}
             onSubmit={this.handleSubmit}
           >
+          <h2> Sign In </h2>
           <button type="button" className={css(styles.button)} onClick={() => this.authenticate(googleProvider)}>
+            <i className={`fab fa-google ${css(styles.brandIcon)}`}> </i>
             Sign in with Google
           </button>
-          <button type="button" className={css(styles.button)} onClick={() => this.authenticate(githubProvider)}>
+          <button type="button" className={css(styles.button, styles.github)} onClick={() => this.authenticate(githubProvider)}>
+            <i className={`fab fa-github ${css(styles.brandIcon)}`}></i>
             Sign in with Github
           </button>
             {/* <label
