@@ -21,7 +21,7 @@ class SignIn extends Component {
   // }
 
   authenticate = (provider) => {
-    auth.signInWithPopup(googleProvider)
+    auth.signInWithPopup(provider)
   }
 
   render() {
@@ -41,7 +41,7 @@ class SignIn extends Component {
           <button type="button" className={css(styles.button)} onClick={() => this.authenticate(googleProvider)}>
             Sign in with Google
           </button>
-          <button type="button" className={css(styles.button)} onClick={() => this.authenticate(googleProvider)}>
+          <button type="button" className={css(styles.button)} onClick={() => this.authenticate(githubProvider)}>
             Sign in with Github
           </button>
             {/* <label
@@ -86,7 +86,7 @@ const styles = StyleSheet.create({
   },
 
   header: {
-    backgroundColor: '#a0522d',
+    backgroundColor: '#fff',
     height: '4rem',
     padding: '0 2rem',
     margin: 0,
@@ -96,7 +96,7 @@ const styles = StyleSheet.create({
   },
 
   title: {
-    color: '#004c4c',
+    color: '#ff3344',
     fontWeight: 400,
     textTransform: 'uppercase',
     lineHeight: '80px',
@@ -110,15 +110,16 @@ const styles = StyleSheet.create({
     flexDirection: 'column',
     justifyContent: 'center',
     margin: '0 auto',
+    paddingBottom: '3rem',
   },
 
   form: {
     width: '40rem',
-    height: '15rem',
     backgroundColor: 'white',
     boxShadow: '0 1px 1px rgba(0,0,0,.1)',
     marginBottom: '2rem',
-    padding: '2rem 0 0',
+    paddingBottom: '2rem',
+    paddingTop: '2rem',
   },
 
   label: {
@@ -148,13 +149,22 @@ const styles = StyleSheet.create({
 
   button: {
     display: 'block',
-    margin: '0 auto',
+    margin: '0 auto 1rem',
     padding: '1rem 2rem',
     fontSize: '1.2rem',
     borderRadius: '1rem',
-    backgroundColor: '#004c4c',
+    backgroundColor: '#ff3333',
     color: 'white',
     width: '20rem',
+  },
+
+  github: {
+    marginBottom: 0,
+    backgroundColor: '#6e5494',
+  },
+
+  brandIcon: {
+    marginRight: '1rem',
   },
 })
 
