@@ -1,5 +1,5 @@
-import React from 'react'
-import { StyleSheet, css } from 'aphrodite'
+import React from 'react';
+import { StyleSheet, css } from 'aphrodite';
 
 const Room = ({ roomName }) => {
   return (
@@ -31,4 +31,4 @@ const styles = StyleSheet.create({
   },
 })
 
-export default Room
+export default Room;
