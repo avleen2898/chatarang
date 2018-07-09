@@ -6,8 +6,8 @@ const MessageList = ({messages, room}) => {
     return (
         <div className="MessageList" style={styles.messageList}>
             <div className="roomAnnouncement" style={styles.roomAnnouncement}>
-                <h3 style={styles.h3}>{room.name}</h3>
-                <p>This is the very beginning of the #general room.</p>
+                <h3 style={styles.h3}>#{room.name}</h3>
+                <p>This is the very beginning of the {room.name} room.</p>
             </div>
             {messages.map(msg => (
                 <Message message={msg} key={msg.id}/>
