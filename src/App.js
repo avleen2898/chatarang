@@ -20,11 +20,11 @@ class App extends Component {
     auth.onAuthStateChanged((user) => {
       if(user)
       {
-        //user is signed in
+        //User is signed in
         this.handleAuth(user);
       }
       else{
-        //user is signed out
+        //User is signed out
         this.handleUnauth();
       }
     })
@@ -35,7 +35,7 @@ class App extends Component {
       uid: oAuthUser.uid,
       displayName: oAuthUser.displayName,
       email: oAuthUser.email,
-      photoUrl: oAuthUser.photoUrl,
+      photoUrl: oAuthUser.photoURL,
     }
     this.setState({user: user});
     localStorage.setItem('user', JSON.stringify(user));
