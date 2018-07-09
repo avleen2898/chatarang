@@ -1,11 +1,14 @@
 import React from 'react';
 import { StyleSheet, css } from 'aphrodite';
 
-const Room = ({ roomName }) => {
+const Room = (props) => {
   return (
     <li className={css(styles.item)}>
-      <a href="/" className={css(styles.link)}>
-        {roomName}
+      <a href="/" className={css(styles.link)} onClick={(e) => {
+        e.preventDefault();
+        props.setCurrentRoom(props.roomName)
+      }}>
+      {props.roomName}
       </a>
     </li>
   )
