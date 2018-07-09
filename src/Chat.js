@@ -27,11 +27,15 @@ class Chat extends Component{
     }
 
     componentDidMount(){
-        base.syncState(`messages/general`, {
+        this.messagesRef = base.syncState(`messages/general`, {
             context: this,
             state: 'messages',
             asArray: true,
         });
+    }
+
+    componentWillUnmount(){
+        base.removeBinding(this.messagesRef);
     }
 
     render(){
