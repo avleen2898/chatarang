@@ -1,4 +1,4 @@
-import React, { Component , Fragment} from 'react';
+import React, { Component } from 'react';
 
 import Sidebar from './Sidebar';
 import Chat from './Chat';
@@ -60,7 +60,7 @@ class Main extends Component {
 
   render() {
     if (this.state.showRoomForm) {
-      return <RoomForm addRoom={this.addRoom} />
+      return <RoomForm addRoom={this.addRoom} hideRoomForm={this.hideRoomForm} />
     }
 
     return (
