@@ -28,7 +28,7 @@ class Chat extends Component {
     base.removeBinding(this.messagesRef)
   }
 
-  syncMessages(){
+  syncMessages = () => {
     if(this.messagesRef){
         base.removeBinding(this.messagesRef);
     }

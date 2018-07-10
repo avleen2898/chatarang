@@ -42,6 +42,12 @@ class Main extends Component {
     this.setState({ room })
   }
 
+  addRoom = (room) => {
+      const rooms = {...this.state.rooms};
+      rooms[room.name] = room;
+      this.setState({rooms: rooms});
+  }
+
   render() {
     return (
       <div className="Main" style={styles}>
