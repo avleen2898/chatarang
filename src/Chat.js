@@ -10,6 +10,7 @@ class Chat extends Component{
         super();
         this.state = {
             messages: [],
+            messagesRef: null,
           }; 
     }
 
@@ -22,20 +23,35 @@ class Chat extends Component{
             user: user,
             body: body,
         });
-
         this.setState({messages: messages});
     }
 
     componentDidMount(){
-        this.messagesRef = base.syncState(`messages/general`, {
-            context: this,
-            state: 'messages',
-            asArray: true,
-        });
+        this.getMessages();
+    }
+
+    componentDidUpdate(prevProps){
+        if(prevProps.room.name !== this.props.room.name){
+            this.getMessages();
+        }
     }
 
     componentWillUnmount(){
         base.removeBinding(this.messagesRef);
+    }
+
+    getMessages = () => {
+        if(this.state.messagesRef){
+            base.removeBinding(this.state.messagesRef);
+        }
+
+        this.messagesRef = base.syncState(`messages/${this.props.room.name}`, {
+            context: this,
+            state: 'messages',
+            asArray: true,
+        });
+
+        this.setState({messagesRef: this.messagesRef});
     }
 
     render(){
