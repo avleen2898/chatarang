@@ -1,28 +1,31 @@
-import React from 'react';
-import { StyleSheet, css } from 'aphrodite';
+import React from 'react'
+import { StyleSheet, css } from 'aphrodite'
+import { Link } from 'react-router-dom'
 
-import Room from './Room';
+import Room from './Room'
 
-const RoomList = ({ rooms, setCurrentRoom, showRoomForm}) => {
+const RoomList = ({ rooms }) => {
   return (
     <nav
       className={`RoomList ${css(styles.roomList)}`}
     >
-    <div className={css(styles.heading)}>
-      <h2 className={css(styles.h2)}>
-        Rooms
-      </h2>
-      <button onClick={showRoomForm} className={css(styles.button)}>
-        <i className="fas fa-plus-circle" title="Add room"></i>
-      </button>
-    </div>
+      <div className={css(styles.heading)}>
+        <h2 className={css(styles.h2)}>
+          Rooms
+        </h2>
+        <Link
+          className={css(styles.button)}
+          to="/chat/new-room"
+        >
+          <i className="fas fa-plus-circle" title="Add room"></i>
+        </Link>
+      </div>
       <ul className={css(styles.list)}>
         {
           Object.keys(rooms).map(
             roomName => <Room
                           roomName={roomName}
                           key={roomName}
-                          setCurrentRoom={setCurrentRoom}
                         />
           )
         }
@@ -45,11 +48,13 @@ const styles = StyleSheet.create({
     marginLeft: 0,
     paddingLeft: 0,
   },
+
   heading: {
     display: 'flex',
     justifyContent: 'space-between',
     alignItems: 'center',
   },
+
   button: {
     border: 0,
     backgroundColor: 'transparent',
@@ -62,8 +67,8 @@ const styles = StyleSheet.create({
 
     ':hover': {
       color: 'white',
-    },
-  }, 
+    }
+  },
 })
 
-export default RoomList;
+export default RoomList

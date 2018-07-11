@@ -1,16 +1,20 @@
-import React from 'react';
+import React from 'react'
 
-import UserInfo from './UserInfo';
-import RoomList from './RoomList';
+import UserInfo from './UserInfo'
+import RoomList from './RoomList'
 
-const Sidebar = ({user, signOut, rooms, setCurrentRoom, showRoomForm}) => {
+const Sidebar = ({ user, signOut, rooms }) => {
   return (
-    <aside className="Sidebar" style={styles.sidebar}>
-      <UserInfo user={user} signOut={signOut}/>
-      <h1 style={styles.h1}>
-        XTBC 18
-      </h1>
-      <RoomList rooms={rooms} setCurrentRoom={setCurrentRoom} showRoomForm={showRoomForm}/>
+    <aside
+      className="Sidebar"
+      style={styles.sidebar}
+    >
+      <UserInfo
+        user={user}
+        signOut={signOut}
+      />
+      <h1 style={styles.h1}>XTBC 18</h1>
+      <RoomList rooms={rooms} />
     </aside>
   )
 }
@@ -24,28 +28,13 @@ const styles = {
     display: 'flex',
     flexDirection: 'column',
   },
+
   h1: {
     color: 'white',
     fontSize: '1.2rem',
     marginTop: 0,
     padding: '0 1rem',
   },
-  h2: {
-    fontSize: '1rem',
-  },
-  ul: {
-    listStyle: 'none',
-    marginLeft: 0,
-    paddingLeft: 0,
-  },
-  li: {
-    marginBottom: '0.5rem',
-  },
-  a: {
-    display: 'block',
-    color: 'whitesmoke',
-    textDecoration: 'none',
-  }
-};
+}
 
-export default Sidebar;
+export default Sidebar
