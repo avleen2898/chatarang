@@ -1,9 +1,9 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react'
 
-import ChatHeader from './ChatHeader';
-import MessageList from './MessageList';
-import MessageForm from './MessageForm';
-import base from './base';
+import ChatHeader from './ChatHeader'
+import MessageList from './MessageList'
+import MessageForm from './MessageForm'
+import base from './base'
 
 class Chat extends Component {
   constructor() {
@@ -15,13 +15,13 @@ class Chat extends Component {
   }
 
   componentDidMount() {
-    this.syncMessages();
+    this.syncMessages()
   }
 
-  componentDidUpdate(prevProps, _prevState, _snapshot){
-     if(prevProps.room.name !== this.props.room.name){
-        this.syncMessages();
-     }
+  componentDidUpdate(prevProps, _prevState, _snapshot) {
+    if (prevProps.room.name !== this.props.room.name) {
+      this.syncMessages()
+    }
   }
 
   componentWillUnmount() {
@@ -29,18 +29,20 @@ class Chat extends Component {
   }
 
   syncMessages = () => {
-    if(this.messagesRef){
-        base.removeBinding(this.messagesRef);
+    // Stop syncing with the current endpoint
+    if (this.messagesRef) {
+      base.removeBinding(this.messagesRef)
     }
 
+    // Sync with the new endpoint
     this.messagesRef = base.syncState(
-        `messages/${this.props.room.name}`,
-        {
-          context: this,
-          state: 'messages',
-          asArray: true,
-        }
-      )
+      `messages/${this.props.room.name}`,
+      {
+        context: this,
+        state: 'messages',
+        asArray: true,
+      }
+    )
   }
 
   addMessage = (body) => {
@@ -62,6 +64,7 @@ class Chat extends Component {
       <div className="Chat" style={styles}>
         <ChatHeader
           room={this.props.room}
+          removeRoom={this.props.removeRoom}
         />
         <MessageList
           messages={this.state.messages}
@@ -79,4 +82,4 @@ const styles = {
   flexDirection: 'column',
 }
 
-export default Chat;
+export default Chat
