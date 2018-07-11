@@ -1,9 +1,10 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react'
+import { Route, Switch, Redirect } from 'react-router-dom'
 
-import Sidebar from './Sidebar';
-import Chat from './Chat';
-import RoomForm from './RoomForm';
-import base from './base';
+import Sidebar from './Sidebar'
+import Chat from './Chat'
+import RoomForm from './RoomForm'
+import base from './base'
 
 class Main extends Component {
   state = {
@@ -26,17 +27,33 @@ class Main extends Component {
             name: 'general',
             description: 'Chat about stuff',
           },
-          random: {
-              name: 'random',
-              description: 'Random stuff',
-          }
-        }
+        },
+        then: this.setRoomFromRoute,
       }
     )
   }
 
+  componentDidUpdate(prevProps) {
+    const { roomName } = this.props.match.params
+    if (prevProps.match.params.roomName !== roomName) {
+      this.setRoomFromRoute()
+    }
+  }
+
   componentWillUnmount() {
     base.removeBinding(this.roomsRef)
+  }
+
+  setRoomFromRoute = () => {
+    const { roomName } = this.props.match.params
+    this.setCurrentRoom(roomName)
+  }
+
+  addRoom = room => {
+    const rooms = {...this.state.rooms}
+    rooms[room.name] = room
+
+    this.setState({ rooms })
   }
 
   setCurrentRoom = roomName => {
@@ -44,38 +61,49 @@ class Main extends Component {
     this.setState({ room })
   }
 
-  addRoom = (room) => {
-      const rooms = {...this.state.rooms};
-      rooms[room.name] = room;
-      this.setState({rooms: rooms});
-  }
-
   showRoomForm = () => {
-      this.setState({showRoomForm: true});
+    this.setState({ showRoomForm: true })
   }
 
   hideRoomForm = () => {
-    this.setState({showRoomForm: false});
+    this.setState({ showRoomForm: false })
   }
 
   render() {
-    if (this.state.showRoomForm) {
-      return <RoomForm addRoom={this.addRoom} hideRoomForm={this.hideRoomForm} />
-    }
-
     return (
       <div className="Main" style={styles}>
-        <Sidebar
-          user={this.props.user}
-          signOut={this.props.signOut}
-          rooms={this.state.rooms}
-          setCurrentRoom={this.setCurrentRoom}
-          showRoomForm={this.showRoomForm}
-        />
-        <Chat
-          user={this.props.user}
-          room={this.state.room}
-        />
+        <Switch>
+          <Route
+            path="/chat/new-room"
+            render={() => (
+              <RoomForm
+                addRoom={this.addRoom}
+                hideRoomForm={this.hideRoomForm}
+              />
+            )}
+          />
+          <Route
+            path="/chat/rooms/:roomName"
+            render={() => (
+              <Fragment>
+                <Sidebar
+                  user={this.props.user}
+                  signOut={this.props.signOut}
+                  rooms={this.state.rooms}
+                  setCurrentRoom={this.setCurrentRoom}
+                  showRoomForm={this.showRoomForm}
+                />
+                <Chat
+                  user={this.props.user}
+                  room={this.state.room}
+                />
+              </Fragment>
+            )}
+          />
+          <Route render={() => (
+            <Redirect to="/chat/rooms/general" />
+          )} />
+        </Switch>
       </div>
     )
   }
@@ -87,4 +115,4 @@ const styles = {
   height: '100vh',
 }
 
-export default Main;
+export default Main
